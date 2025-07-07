@@ -1,0 +1,31 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/api/$1" // Backend klasörünüzdeki API'lere yönlendir
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1" // Kalan tüm istekleri frontend'e yönlendir
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*" // CORS için, geliştirme aşamasında * kullanın
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,POST,PUT,DELETE,OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-Requested-With, Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
+}
